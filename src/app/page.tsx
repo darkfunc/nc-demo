@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
-import { LATEST_NEWS_QUERY, LATEST_ANNOUNCEMENTS_QUERY } from "@/sanity/lib/queries";
+import { HOME_PAGE_QUERY } from "@/sanity/lib/queries";
 import { formatDate, excerptFromBlocks } from "@/sanity/lib/format";
 
 export const metadata: Metadata = {
@@ -40,11 +40,19 @@ type Announcement = {
   publishedAt: string;
 };
 
+type AdmissionSection = {
+  visible: boolean;
+  heading: string;
+  buttonText: string;
+  buttonLink: string;
+};
+
 export default async function HomePage() {
-  const [news, announcements] = await Promise.all([
-    client.fetch<NewsItem[]>(LATEST_NEWS_QUERY),
-    client.fetch<Announcement[]>(LATEST_ANNOUNCEMENTS_QUERY),
-  ]);
+  const { news, announcements, admission } = await client.fetch<{
+    news: NewsItem[];
+    announcements: Announcement[];
+    admission: AdmissionSection | null;
+  }>(HOME_PAGE_QUERY);
 
   const [featuredNews, ...secondaryNews] = news;
 
@@ -236,6 +244,22 @@ export default async function HomePage() {
             </div>
           </div>
         </section>
+
+        {admission?.visible && (
+          <section className="bg-maroon text-maroon-foreground py-20">
+            <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+              <h2 className="text-3xl md:text-4xl font-display font-extrabold tracking-tight">
+                {admission.heading}
+              </h2>
+              <Link
+                href={admission.buttonLink}
+                className="shrink-0 inline-flex items-center gap-3 bg-paper text-maroon px-8 py-4 rounded-sm text-xs font-bold tracking-widest uppercase hover:bg-ink hover:text-paper transition-colors shadow-sm"
+              >
+                {admission.buttonText}
+              </Link>
+            </div>
+          </section>
+        )}
       </main>
       <SiteFooter />
     </div>
