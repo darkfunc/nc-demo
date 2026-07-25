@@ -1,7 +1,4 @@
-type PTBlock = {
-  _type: string;
-  children?: { _type: string; text?: string }[];
-};
+import type { PortableTextBlock } from "@portabletext/types";
 
 export function formatDate(dateString: string) {
   return new Date(dateString)
@@ -10,10 +7,10 @@ export function formatDate(dateString: string) {
     .replace(",", ",");
 }
 
-export function excerptFromBlocks(blocks: PTBlock[] = [], maxLength = 160) {
+export function excerptFromBlocks(blocks: PortableTextBlock[] = [], maxLength = 160) {
   const text = blocks
     .filter((b) => b._type === "block")
-    .map((b) => (b.children ?? []).map((c) => c.text ?? "").join(""))
+    .map((b) => (b.children ?? []).map((c) => ("text" in c ? c.text : "")).join(""))
     .join(" ")
     .trim();
   return text.length > maxLength ? text.slice(0, maxLength).trimEnd() + "…" : text;

@@ -7,5 +7,3 @@ const nextConfig: NextConfig = {
     root: fileURLToPath(new URL(".", import.meta.url)),
   },
 };
-
-export default nextConfig;
