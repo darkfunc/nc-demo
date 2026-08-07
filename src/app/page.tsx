@@ -152,7 +152,7 @@ export default async function HomePage() {
             {announcements.map((a, i) => (
               <article
                 key={a._id}
-                className={`group cursor-pointer ${i < 2 ? "md:border-r md:border-border md:pr-8" : ""}`}
+                className={`group cursor-pointer ${i < 4 ? "md:border-r md:border-border md:pr-8" : ""}`}
               >
                 <span className="font-mono text-[10px] text-muted-foreground mb-4 block tracking-widest">
                   {formatDate(a.publishedAt)}
