@@ -1,16 +1,21 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PortableText } from "@portabletext/react";
 
 import { SiteFooter } from "@/components/site-footer";
+import { PrincipalSection } from "@/components/principal-section";
 import { SiteHeader } from "@/components/site-header";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { HOME_PAGE_QUERY } from "@/sanity/lib/queries";
-import { formatDate, excerptFromBlocks } from "@/sanity/lib/format";
+import { formatDate } from "@/sanity/lib/format";
 
 export const metadata: Metadata = {
   title: "Nalanda College Colombo — Home",
   description: "Official website of Nalanda College Colombo.",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export const revalidate = 60; // re-fetch from Sanity at most once a minute
@@ -55,6 +60,7 @@ export default async function HomePage() {
   }>(HOME_PAGE_QUERY);
 
   const [featuredNews, ...secondaryNews] = news;
+  const admissionHref = admission?.buttonLink?.trim() || "/admissions";
 
   return (
     <div className="min-h-screen bg-background text-foreground font-body antialiased">
@@ -109,7 +115,7 @@ export default async function HomePage() {
               />
               <div className="absolute bottom-4 left-4 bg-background/90 backdrop-blur-sm px-3 py-2">
                 <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground">
-                  The Main Administration Block
+                  Malalasekara Hall, Nalanda College Colombo
                 </span>
               </div>
             </div>
@@ -160,10 +166,9 @@ export default async function HomePage() {
                 <h3 className="text-xl font-display font-bold leading-tight mb-4 group-hover:text-maroon transition-colors">
                   {a.title}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-                  {excerptFromBlocks(a.content)}
-                </p>
-                <div className="w-8 h-px bg-maroon group-hover:w-16 transition-all duration-300" />
+                <div className="text-sm text-muted-foreground leading-relaxed space-y-4">
+                  <PortableText value={a.content} />
+                </div>
               </article>
             ))}
           </div>
@@ -252,7 +257,7 @@ export default async function HomePage() {
                 {admission.heading}
               </h2>
               <Link
-                href={admission.buttonLink}
+                href={admissionHref}
                 className="shrink-0 inline-flex items-center gap-3 bg-paper text-maroon px-8 py-4 rounded-sm text-xs font-bold tracking-widest uppercase hover:bg-ink hover:text-paper transition-colors shadow-sm"
               >
                 {admission.buttonText}
@@ -260,6 +265,8 @@ export default async function HomePage() {
             </div>
           </section>
         )}
+
+        <PrincipalSection />
       </main>
       <SiteFooter />
     </div>

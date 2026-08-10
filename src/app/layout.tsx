@@ -43,9 +43,6 @@ export const metadata: Metadata = {
     address: false,
     email: false,
   },
-  alternates: {
-    canonical: "/",
-  },
   robots: {
     index: true,
     follow: true,
@@ -67,7 +64,7 @@ export const metadata: Metadata = {
       "Official website of Nalanda College Colombo. Vision, mission, admissions notices, co-curricular life, alumni information and contact details.",
     images: [
       {
-        url: "/og-image.jpg", // TODO: add a real 1200x630 image to /public
+        url: "/hero-building.jpg",
         width: 1200,
         height: 630,
         alt: SITE_NAME,
@@ -79,14 +76,14 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} — Character Illumines Wisdom`,
     description:
       "Official website of Nalanda College Colombo. Vision, mission, admissions notices, co-curricular life, alumni information and contact details.",
-    images: ["/og-image.jpg"],
+    images: ["/hero-building.jpg"],
   },
   icons: {
     icon: [{ url: "/nc-crest.png", type: "image/png" }],
     shortcut: "/nc-crest.png",
-    apple: "/apple-touch-icon.png", // TODO: add 180x180 apple-touch-icon.png to /public
+    apple: "/nc-crest.png",
   },
-  manifest: "/site.webmanifest", // TODO: add a basic web manifest to /public
+  manifest: "/site.webmanifest",
   category: "education",
 };
 
@@ -116,7 +113,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
-<link rel="icon" href="/nc-crest.png" type="image/png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link

@@ -1,0 +1,18 @@
+{
+  "name": "Nalanda College Colombo",
+  "short_name": "Nalanda",
+  "description": "Official website of Nalanda College Colombo.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/nc-crest.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

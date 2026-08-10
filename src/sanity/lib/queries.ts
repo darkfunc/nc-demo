@@ -23,7 +23,7 @@ export const LATEST_ANNOUNCEMENTS_QUERY = groq`
 `;
 
 export const HOME_PAGE_QUERY = groq`{
-  "news": *[_type == "news"] | order(publishedAt desc)[0...3]{
+  "news": *[_type == "news"] | order(publishedAt desc)[0...4]{
     _id, title, "slug": slug.current, tag, description, thumbnailImage, publishedAt
   },
   "announcements": *[_type == "announcement"] | order(publishedAt desc)[0...3]{

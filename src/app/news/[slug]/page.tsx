@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
 
@@ -58,6 +59,14 @@ export default async function NewsDetailPage({
       <SiteHeader />
       <main>
         <article className="max-w-4xl mx-auto px-6 py-20">
+          <Link
+            href="/news"
+            className="mb-5 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-maroon hover:text-ink transition-colors"
+          >
+            <span aria-hidden="true">←</span>
+            Back to News
+          </Link>
+          <br/>
           <span className="font-mono text-[10px] uppercase tracking-widest text-maroon font-bold">
             {news.tag ? `${news.tag} · ` : ""}
             {formatDate(news.publishedAt)}
