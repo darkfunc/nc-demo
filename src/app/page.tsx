@@ -115,7 +115,7 @@ export default async function HomePage() {
               />
               <div className="absolute bottom-4 left-4 bg-background/90 backdrop-blur-sm px-3 py-2">
                 <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground">
-                  Malalasekara Hall, Nalanda College Colombo
+                  Nalanda Century Building
                 </span>
               </div>
             </div>
@@ -250,6 +250,8 @@ export default async function HomePage() {
           </div>
         </section>
 
+        <PrincipalSection />
+
         {admission?.visible && (
           <section className="bg-maroon text-maroon-foreground py-20">
             <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
@@ -265,8 +267,6 @@ export default async function HomePage() {
             </div>
           </section>
         )}
-
-        <PrincipalSection />
       </main>
       <SiteFooter />
     </div>
