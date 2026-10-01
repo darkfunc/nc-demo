@@ -175,7 +175,7 @@ export default async function HomePage() {
 
           <div className="flex flex-wrap gap-4 justify-between items-end mb-12 border-b border-border pb-6">
             <h2 className="text-4xl md:text-5xl font-display font-extrabold tracking-tight">
-              College News
+              News
             </h2>
             <Link href="/news" className="text-xs font-bold uppercase tracking-widest hover:text-maroon">
               Journal Archive →
