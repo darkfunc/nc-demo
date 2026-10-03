@@ -10,7 +10,7 @@ import { ALL_NEWS_QUERY } from "@/sanity/lib/queries";
 export const metadata: Metadata = {
   title: "News & Announcements — Nalanda College Colombo",
   description:
-    "Latest news, announcements and dispatches from Nalanda College Colombo — academics, sports, cultural affairs and the Old Boys' community.",
+    "Latest news, announcements and dispatches from Nalanda College Colombo — academics, sports and cultural affairs.",
 };
 
 export const revalidate = 60;
@@ -35,10 +35,11 @@ export default async function NewsPage() {
         <PageHero
           eyebrow="The Nalanda Journal"
           title={
+            
             <>
               Dispatches
               <br />
-              from <span className="text-maroon">Campus.</span>
+              from <span className="text-maroon">Nalanda College</span>
             </>
           }
           intro="A running record of academic milestones, sporting victories, cultural performances and the everyday life of the college."

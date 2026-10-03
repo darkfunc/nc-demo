@@ -85,7 +85,6 @@ export default function ContactPage() {
                 <select className="mt-2 w-full bg-transparent border-b border-border py-3 text-base focus:outline-none focus:border-maroon transition-colors">
                   <option>General enquiry</option>
                   <option>Admissions</option>
-                  <option>Old Boys' Association</option>
                   <option>Sports & Activities</option>
                   <option>Media & Press</option>
                 </select>

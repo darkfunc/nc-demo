@@ -15,9 +15,9 @@ import {
 
 const navLinks = [
   { label: "News", href: "/news" },
+  { label: "Unit Papers", href: "/unit-test-papers" },
   { label: "Achievements", href: "/achievements" },
   { label: "Co-Curricular", href: "/co-curricular" },
-  { label: "Alumni", href: "/alumni" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -31,7 +31,6 @@ export function SiteHeader() {
         <div className="max-w-7xl mx-auto py-2.5 px-6 flex flex-col items-center text-center gap-1 sm:flex-row sm:justify-between sm:text-left sm:items-center sm:gap-2 text-[11px] font-mono tracking-widest uppercase">
           <div className="flex flex-wrap justify-center sm:justify-start gap-6">
             <span>info@nalandacollege.lk</span>
-            <span className="hidden sm:inline">Official website</span>
           </div>
           <div className="flex flex-wrap justify-center sm:justify-end gap-6">
             <span className="hidden md:inline opacity-80">Vision · virtues and wisdom</span>

@@ -37,45 +37,44 @@
   --color-ring: var(--ring);
   --color-maroon: var(--maroon);
   --color-maroon-foreground: var(--maroon-foreground);
+  --color-brass: var(--brass);
+  --color-brass-foreground: var(--brass-foreground);
   --color-ink: var(--ink);
   --color-paper: var(--paper);
 }
 
 :root {
   --radius: 0.375rem;
-  --background: oklch(0.995 0.001 106);
-  --foreground: oklch(0.18 0.01 20);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.01 20);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.01 20);
-  --primary: oklch(0.18 0.01 20);
-  --primary-foreground: oklch(0.995 0.001 106);
-  --secondary: oklch(0.96 0.003 106);
-  --secondary-foreground: oklch(0.18 0.01 20);
-  --muted: oklch(0.96 0.003 106);
-  --muted-foreground: oklch(0.5 0.008 30);
-  --accent: oklch(0.96 0.003 106);
-  --accent-foreground: oklch(0.18 0.01 20);
+  --background: oklch(0.975 0.012 88);
+  --foreground: oklch(0.19 0.018 28);
+  --card: oklch(0.99 0.006 88);
+  --card-foreground: oklch(0.19 0.018 28);
+  --popover: oklch(0.99 0.006 88);
+  --popover-foreground: oklch(0.19 0.018 28);
+  --primary: oklch(0.19 0.018 28);
+  --primary-foreground: oklch(0.975 0.012 88);
+  --secondary: oklch(0.935 0.018 88);
+  --secondary-foreground: oklch(0.19 0.018 28);
+  --muted: oklch(0.935 0.018 88);
+  --muted-foreground: oklch(0.46 0.018 32);
+  --accent: oklch(0.935 0.018 88);
+  --accent-foreground: oklch(0.19 0.018 28);
   --destructive: oklch(0.55 0.22 27);
-  --destructive-foreground: oklch(0.995 0.001 106);
-  --border: oklch(0.18 0.01 20 / 12%);
-  --input: oklch(0.18 0.01 20 / 12%);
-  --ring: oklch(0.36 0.11 25);
-
-  --maroon: oklch(0.36 0.11 25);
-  --maroon-foreground: oklch(0.995 0.001 106);
-  --ink: oklch(0.13 0.01 20);
-  --paper: oklch(0.995 0.001 106);
+  --destructive-foreground: oklch(0.975 0.012 88);
+  --border: oklch(0.25 0.018 28 / 16%);
+  --input: oklch(0.25 0.018 28 / 18%);
+  --ring: oklch(0.36 0.12 25);
+  --maroon: oklch(0.36 0.12 25);
+  --maroon-foreground: oklch(0.975 0.012 88);
+  --brass: oklch(0.68 0.12 76);
+  --brass-foreground: oklch(0.2 0.035 42);
+  --ink: oklch(0.14 0.018 28);
+  --paper: oklch(0.985 0.008 88);
 }
 
 @layer base {
-  * {
-    border-color: var(--color-border);
-  }
-  html {
-    font-family: var(--font-body);
-  }
+  * { border-color: var(--color-border); }
+  html { font-family: var(--font-body); }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -88,28 +87,199 @@
   }
 }
 
-@utility font-display {
-  font-family: var(--font-display);
-}
-@utility font-body {
-  font-family: var(--font-body);
-}
-@utility font-mono {
-  font-family: var(--font-mono);
-}
+@utility font-display { font-family: var(--font-display); }
+@utility font-body { font-family: var(--font-body); }
+@utility font-mono { font-family: var(--font-mono); }
 
 @keyframes slide-up {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
 @keyframes clip-reveal {
   from { clip-path: inset(0 100% 0 0); }
   to { clip-path: inset(0 0 0 0); }
 }
 
-@utility animate-reveal {
-  animation: slide-up 0.8s var(--ease-out-expo) both;
+@keyframes preloader-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-@utility animate-clip {
-  animation: clip-reveal 1.2s var(--ease-out-expo) both;
+
+@keyframes preloader-frame {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
 }
+
+@keyframes preloader-grid {
+  from { opacity: 0; transform: scale(1.08); }
+  to { opacity: 0.12; transform: scale(1); }
+}
+
+@keyframes preloader-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes preloader-exit {
+  from { opacity: 1; visibility: visible; }
+  to { opacity: 0; visibility: hidden; }
+}
+
+.home-preloader {
+  overflow: hidden;
+  color: var(--color-paper);
+  background: linear-gradient(135deg, var(--maroon), oklch(0.28 0.1 25));
+  animation: preloader-exit 0.8s var(--ease-out-expo) 1.8s forwards;
+  pointer-events: none;
+}
+
+.home-preloader__grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  background-image: linear-gradient(90deg, transparent 49.9%, var(--color-paper) 50%, transparent 50.1%), linear-gradient(0deg, transparent 49.9%, var(--color-paper) 50%, transparent 50.1%);
+  background-size: min(42vw, 34rem) min(42vw, 34rem);
+  animation: preloader-grid 1.8s var(--ease-out-expo) both;
+}
+
+.home-preloader__topline,
+.home-preloader__footer {
+  position: absolute;
+  left: clamp(1.5rem, 5vw, 5rem);
+  right: clamp(1.5rem, 5vw, 5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: color-mix(in oklab, var(--color-paper) 68%, transparent);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  animation: preloader-rise 0.8s var(--ease-out-expo) 0.35s both;
+}
+
+.home-preloader__topline { top: clamp(1.5rem, 5vw, 3.5rem); }
+.home-preloader__footer { bottom: clamp(1.5rem, 5vw, 3.5rem); animation-delay: 0.7s; }
+
+.home-preloader__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+  animation: preloader-rise 0.9s var(--ease-out-expo) 0.15s both;
+}
+
+.home-preloader__eyebrow {
+  color: color-mix(in oklab, var(--color-paper) 72%, transparent);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.home-preloader__crest-frame {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 9rem;
+  height: 9rem;
+  margin: 0.7rem 0 0.4rem;
+  border: 1px solid color-mix(in oklab, var(--color-paper) 28%, transparent);
+  animation: preloader-frame 1s var(--ease-out-expo) 0.25s both;
+}
+
+.home-preloader__crest {
+  position: relative;
+  z-index: 1;
+  width: 6.5rem;
+  height: 6.5rem;
+  object-fit: contain;
+}
+
+.home-preloader__corner {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  border-color: var(--color-paper);
+  border-style: solid;
+}
+
+.home-preloader__corner--tl { left: -1px; top: -1px; border-width: 2px 0 0 2px; }
+.home-preloader__corner--tr { right: -1px; top: -1px; border-width: 2px 2px 0 0; }
+.home-preloader__corner--bl { left: -1px; bottom: -1px; border-width: 0 0 2px 2px; }
+.home-preloader__corner--br { right: -1px; bottom: -1px; border-width: 0 2px 2px 0; }
+
+.home-preloader__wordmark {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45em;
+  font-family: var(--font-display);
+  font-size: clamp(2.7rem, 8vw, 6.5rem);
+  font-weight: 800;
+  letter-spacing: -0.07em;
+  line-height: 0.78;
+  text-transform: uppercase;
+  animation: preloader-rise 0.9s var(--ease-out-expo) 0.45s both;
+}
+
+.home-preloader__wordmark span:last-child {
+  color: color-mix(in oklab, var(--color-paper) 48%, transparent);
+  font-size: 0.42em;
+  letter-spacing: -0.04em;
+}
+
+.home-preloader__motto {
+  margin: 0;
+  color: var(--color-paper);
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  animation: preloader-rise 0.8s var(--ease-out-expo) 0.65s both;
+}
+
+.home-preloader__progress {
+  display: block;
+  width: min(24vw, 12rem);
+  height: 1px;
+  background: color-mix(in oklab, var(--color-paper) 24%, transparent);
+}
+
+.home-preloader__progress i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--color-paper);
+  transform-origin: left;
+  animation: preloader-progress 1.5s var(--ease-out-expo) 0.1s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-preloader,
+  .home-preloader__grid,
+  .home-preloader__topline,
+  .home-preloader__footer,
+  .home-preloader__content,
+  .home-preloader__crest-frame,
+  .home-preloader__wordmark,
+  .home-preloader__motto,
+  .home-preloader__progress i {
+    animation: none;
+  }
+
+  .news-card,
+  .news-card img,
+  .news-card__veil,
+  .news-card__dot {
+    transition-duration: 0.01ms;
+  }
+}
+
+@utility animate-reveal { animation: slide-up 0.8s var(--ease-out-expo) both; }
+@utility animate-clip { animation: clip-reveal 1.2s var(--ease-out-expo) both; }

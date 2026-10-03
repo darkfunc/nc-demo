@@ -5,6 +5,7 @@ import { PortableText } from "@portabletext/react";
 import { SiteFooter } from "@/components/site-footer";
 import { PrincipalSection } from "@/components/principal-section";
 import { SiteHeader } from "@/components/site-header";
+import { PagePreloader } from "@/components/page-preloader";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { HOME_PAGE_QUERY } from "@/sanity/lib/queries";
@@ -20,12 +21,6 @@ export const metadata: Metadata = {
 
 export const revalidate = 60; // re-fetch from Sanity at most once a minute
 
-const stats = [
-  { value: "1925", suffix: "", label: "Founded" },
-  { value: "Virtues", suffix: "", label: "Vision" },
-  { value: "Service", suffix: "", label: "Mission" },
-  { value: "50000+", suffix: "", label: "Alumini" },
-];
 
 type NewsItem = {
   _id: string;
@@ -64,6 +59,7 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground font-body antialiased">
+      <PagePreloader />
       <SiteHeader />
 
       <main>
@@ -92,7 +88,7 @@ export default async function HomePage() {
                   <span className="transition-transform group-hover:translate-x-1">→</span>
                 </Link>
                 <Link
-                  href="/admissions"
+                  href="https://youtu.be/3ySGmaQaeUY?si=xFCl_8DfBjKsxobJ"
                   className="group inline-flex items-center gap-3 font-medium text-sm text-muted-foreground hover:text-maroon transition-colors"
                 >
                   <span className="w-8 h-8 rounded-full border border-border group-hover:border-maroon group-hover:text-maroon grid place-items-center text-[10px] transition-colors">
@@ -121,26 +117,21 @@ export default async function HomePage() {
             </div>
           </div>
         </section>
-
-        <section className="bg-ink text-paper py-16">
-          <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-            {stats.map((s, i) => (
-              <div
-                key={s.label}
-                className="animate-reveal"
-                style={{ animationDelay: `${(i + 1) * 100}ms` }}
+                {admission?.visible && (
+          <section className="bg-maroon text-maroon-foreground py-20">
+            <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+              <h2 className="text-3xl md:text-4xl font-display font-extrabold tracking-tight">
+                {admission.heading}
+              </h2>
+              <Link
+                href={admissionHref}
+                className="shrink-0 inline-flex items-center gap-3 bg-paper text-maroon px-8 py-4 rounded-sm text-xs font-bold tracking-widest uppercase hover:bg-ink hover:text-paper transition-colors shadow-sm"
               >
-                <div className="font-display text-3xl md:text-4xl font-bold mb-2 tracking-tight text-paper">
-                  {s.value}
-                  <span className="text-maroon">{s.suffix}</span>
-                </div>
-                <div className="font-mono text-[10px] uppercase tracking-widest text-paper/50">
-                  {s.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+                {admission.buttonText}
+              </Link>
+            </div>
+          </section>
+        )}
 
         <section className="py-24 max-w-7xl mx-auto px-6">
           <div className="flex flex-wrap gap-4 justify-between items-end mb-12 border-b border-border pb-6">
@@ -251,22 +242,6 @@ export default async function HomePage() {
         </section>
 
         <PrincipalSection />
-
-        {admission?.visible && (
-          <section className="bg-maroon text-maroon-foreground py-20">
-            <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
-              <h2 className="text-3xl md:text-4xl font-display font-extrabold tracking-tight">
-                {admission.heading}
-              </h2>
-              <Link
-                href={admissionHref}
-                className="shrink-0 inline-flex items-center gap-3 bg-paper text-maroon px-8 py-4 rounded-sm text-xs font-bold tracking-widest uppercase hover:bg-ink hover:text-paper transition-colors shadow-sm"
-              >
-                {admission.buttonText}
-              </Link>
-            </div>
-          </section>
-        )}
       </main>
       <SiteFooter />
     </div>

@@ -18,7 +18,7 @@ export function PageHero({
         className="pointer-events-none absolute inset-0"
         style={{
           backgroundImage:
-            "radial-gradient(circle at top right, rgba(113, 31, 25, 0.22), transparent 40%), radial-gradient(circle at 18% 12%, rgba(113, 31, 25, 0.12), transparent 22%), linear-gradient(180deg, rgba(113, 31, 25, 0.1), transparent 50%)",
+            "radial-gradient(circle at top right, color-mix(in oklab, var(--maroon) 22%, transparent), transparent 40%), radial-gradient(circle at 18% 12%, color-mix(in oklab, var(--brass) 20%, transparent), transparent 22%), linear-gradient(180deg, color-mix(in oklab, var(--maroon) 10%, transparent), transparent 50%)",
         }}
       />
       <div className="relative max-w-7xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-24">

@@ -19,9 +19,8 @@ const featuredAchievement = {
   details: [
     "The certification was presented to Principal Mr. Iran Champika Silva by the Hon. Minister of Environment, Dr. Dammika Patabendi, at the Ministry of Environment on 5 June 2026, coinciding with World Environment Day 2026.",
     "The ceremony was attended by the Hon. Deputy Minister of Environment, Mr. Anton Jayakody, Ms. Padma Abeykoon of the Ministry of Environment, and Ms. Harshini Aberathna, Chief Executive Officer of the Sri Lanka Climate Fund.",
-    "Representing Nalanda College were Deputy Principals Mrs. Anupa Weeraratne and Mr. Charitha Rupasinghe, Assistant Principal Mrs. Deepthi Kulatunga, members of the academic staff, students of the Environment Society, and the Executive President of the Nalanda Old Boys' Association, Mr. Mohan Chandana Gunadasa, together with other office-bearers of the Association.",
+    "Representing Nalanda College were Deputy Principals Mrs. Anupa Weeraratne and Mr. Charitha Rupasinghe, Assistant Principal Mrs. Deepthi Kulatunga, members of the academic staff and students of the Environment Society.",
     "This recognition, awarded during National Environment Week 2026, reflects the College's commitment to environmental sustainability and aligns with the themes 'Mitigating the Impact of Climate Change and Air Pollution' and 'Fostering Environmental Consciousness from School Days.'",
-    "The Nalanda Old Boys' Association also acknowledged the Nalanda 98 Group for sponsoring the certification process, with funds recently handed over to the Principal by the Group's President, Mr. Kasun Narangoda.",
   ],
 };
 
@@ -93,8 +92,8 @@ export default function AchievementsPage() {
                   responsibility and sustainable practice.
                 </p>
                 <p>
-                  It also acknowledges the collective effort of the school community, alumni,
-                  and partners who supported the certification process.
+                  It also acknowledges the collective effort of the school community and
+                  partners who supported the certification process.
                 </p>
                 <p>
                   More achievements can be added here later as smaller entries without changing

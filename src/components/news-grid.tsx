@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
 import { urlFor } from "@/sanity/lib/image";
 import { formatDate } from "@/sanity/lib/format";
 
@@ -91,27 +92,34 @@ export function NewsGrid({ news }: { news: NewsItem[] }) {
           {rest.map((a) => (
             <article
               key={a._id}
-              className="group cursor-pointer rounded-3xl border border-border bg-secondary/40 p-4 shadow-sm shadow-black/5 transition-transform hover:-translate-y-1"
+              className="news-card group cursor-pointer rounded-3xl border border-border bg-secondary/40 p-4 shadow-sm shadow-black/5 transition-[transform,box-shadow,border-color] duration-500 ease-out hover:-translate-y-2 hover:border-maroon/30 hover:shadow-xl hover:shadow-maroon/10"
             >
               <a href={`/news/${a.slug}`}>
-                <div className="overflow-hidden rounded-2xl ring-1 ring-black/5 mb-5">
+                <div className="news-card__media relative overflow-hidden rounded-2xl ring-1 ring-black/5 mb-5">
                   <img
                     src={urlFor(a.thumbnailImage).width(800).height(600).url()}
                     alt={a.title}
                     width={800}
                     height={600}
                     loading="lazy"
-                    className="w-full aspect-4/3 object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    className="w-full aspect-4/3 object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   />
+                  <span className="news-card__veil absolute inset-0 bg-linear-to-t from-ink/65 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <span className="absolute bottom-4 right-4 flex h-10 w-10 translate-y-3 items-center justify-center rounded-full bg-paper text-ink opacity-0 shadow-lg transition-[opacity,transform] duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                    <ArrowUpRight className="h-4 w-4" />
+                  </span>
                 </div>
                 {a.tag && (
                   <span className="font-mono text-[10px] uppercase tracking-widest text-maroon font-bold">
                     {a.tag} · {formatDate(a.publishedAt)}
                   </span>
                 )}
-                <h3 className="font-display font-bold text-xl mt-2 mb-3 leading-tight group-hover:text-maroon transition-colors">
-                  {a.title}
-                </h3>
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className="font-display font-bold text-xl mt-2 mb-3 leading-tight transition-colors duration-300 group-hover:text-maroon">
+                    {a.title}
+                  </h3>
+                  <span className="news-card__dot mt-3 h-2 w-2 shrink-0 rounded-full bg-maroon opacity-30 transition-transform duration-500 group-hover:scale-150 group-hover:opacity-100" />
+                </div>
                 <p className="text-sm text-muted-foreground leading-relaxed">{a.description}</p>
               </a>
             </article>

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: `%s — ${SITE_NAME}`,
   },
   description:
-    "Official website of Nalanda College Colombo. Vision, mission, admissions notices, co-curricular life, alumni information and contact details.",
+    "Official website of Nalanda College Colombo. Vision, mission, admissions notices, co-curricular life and contact details.",
   applicationName: SITE_NAME,
   keywords: [
     "Nalanda College Colombo",
@@ -25,9 +25,6 @@ export const metadata: Metadata = {
     "Nalanda",
     "NJOBA",
     "NCCU",
-    "Nalanda College Colombo Old Boys Association",
-    "Nalanda College Colombo Union",
-    "Nalanda College Colombo Alumni",
     "Nalanda College Colombo Admissions",
     "Nalanda College Colombo News",
     "Nalanda College Colombo Announcements",
@@ -61,7 +58,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} — Character Illumines Wisdom`,
     description:
-      "Official website of Nalanda College Colombo. Vision, mission, admissions notices, co-curricular life, alumni information and contact details.",
+      "Official website of Nalanda College Colombo. Vision, mission, admissions notices, co-curricular life and contact details.",
     images: [
       {
         url: "/hero-building.jpg",
@@ -75,7 +72,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${SITE_NAME} — Character Illumines Wisdom`,
     description:
-      "Official website of Nalanda College Colombo. Vision, mission, admissions notices, co-curricular life, alumni information and contact details.",
+      "Official website of Nalanda College Colombo. Vision, mission, admissions notices, co-curricular life and contact details.",
     images: ["/hero-building.jpg"],
   },
   icons: {
@@ -91,8 +88,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#1a1a1a" },
+    { media: "(prefers-color-scheme: light)", color: "#f4efe4" },
+    { media: "(prefers-color-scheme: dark)", color: "#6c211a" },
   ],
 };
 
