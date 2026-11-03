@@ -67,6 +67,9 @@ export function NewsGrid({ news }: { news: NewsItem[] }) {
               width={1200}
               height={800}
               className="w-full aspect-3/2 rounded-2xl object-cover ring-1 ring-black/5"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
             />
           </div>
           <div className="lg:col-span-5 rounded-3xl border border-border bg-secondary/40 p-8 md:p-10 shadow-sm shadow-black/5">

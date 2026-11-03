@@ -61,9 +61,7 @@ export const metadata: Metadata = {
       "Official website of Nalanda College Colombo. Vision, mission, admissions notices, co-curricular life and contact details.",
     images: [
       {
-        url: "/hero-building.jpg",
-        width: 1200,
-        height: 630,
+        url: "/nc-crest.png",
         alt: SITE_NAME,
       },
     ],
@@ -73,7 +71,7 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} — Character Illumines Wisdom`,
     description:
       "Official website of Nalanda College Colombo. Vision, mission, admissions notices, co-curricular life and contact details.",
-    images: ["/hero-building.jpg"],
+    images: ["/nc-crest.png"],
   },
   icons: {
     icon: [{ url: "/nc-crest.png", type: "image/png" }],

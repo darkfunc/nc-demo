@@ -28,6 +28,8 @@ export function PrincipalSection() {
                 <img
                   src="/principal.jpg"
                   alt="Mr. Iran Champika de Silva, Principal of Nalanda College Colombo"
+                  loading="lazy"
+                  decoding="async"
                   className="absolute inset-0 h-full w-full object-cover"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-ink/85 via-ink/20 to-transparent" />

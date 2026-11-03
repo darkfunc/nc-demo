@@ -90,8 +90,12 @@ export default async function HomePage() {
                 <Link
                   href="https://youtu.be/3ySGmaQaeUY?si=xFCl_8DfBjKsxobJ"
                   className="group inline-flex items-center gap-3 font-medium text-sm text-muted-foreground hover:text-maroon transition-colors"
+                  suppressHydrationWarning
                 >
-                  <span className="w-8 h-8 rounded-full border border-border group-hover:border-maroon group-hover:text-maroon grid place-items-center text-[10px] transition-colors">
+                  <span
+                    className="w-8 h-8 rounded-full border border-border group-hover:border-maroon group-hover:text-maroon grid place-items-center text-[10px] transition-colors"
+                    suppressHydrationWarning
+                  >
                     ▶
                   </span>
                   Virtual Tour
@@ -108,6 +112,8 @@ export default async function HomePage() {
                 width={1600}
                 height={1200}
                 className="w-full aspect-4/3 object-cover bg-neutral-100 outline-1 -outline-offset-1 outline-black/5"
+                fetchPriority="high"
+                decoding="async"
               />
               <div className="absolute bottom-4 left-4 bg-background/90 backdrop-blur-sm px-3 py-2">
                 <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground">
@@ -186,6 +192,7 @@ export default async function HomePage() {
                     width={1200}
                     height={800}
                     loading="lazy"
+                    decoding="async"
                     className="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   />
                 </div>
@@ -219,6 +226,7 @@ export default async function HomePage() {
                       width={400}
                       height={400}
                       loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                     />
                   </div>

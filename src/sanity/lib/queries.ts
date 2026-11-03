@@ -49,6 +49,7 @@ export const NEWS_BY_SLUG_QUERY = groq`
   *[_type == "news" && slug.current == $slug][0]{
     _id,
     title,
+    "slug": slug.current,
     tag,
     description,
     thumbnailImage,
@@ -60,4 +61,11 @@ export const NEWS_BY_SLUG_QUERY = groq`
 
 export const NEWS_SLUGS_QUERY = groq`
   *[_type == "news" && defined(slug.current)][].slug.current
+`;
+
+export const NEWS_SITEMAP_QUERY = groq`
+  *[_type == "news" && defined(slug.current)] | order(publishedAt desc){
+    "slug": slug.current,
+    publishedAt
+  }
 `;

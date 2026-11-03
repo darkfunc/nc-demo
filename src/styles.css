@@ -75,6 +75,32 @@
 @layer base {
   * { border-color: var(--color-border); }
   html { font-family: var(--font-body); }
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-maroon) var(--color-secondary);
+  }
+  html::-webkit-scrollbar {
+    width: 8px;
+  }
+  html::-webkit-scrollbar-track {
+    background: var(--color-secondary);
+  }
+  html::-webkit-scrollbar-thumb {
+    background: var(--color-maroon);
+    border: 2px solid var(--color-secondary);
+    border-radius: 999px;
+  }
+  html::-webkit-scrollbar-thumb:hover {
+    background: var(--color-ink);
+  }
+  @media (max-width: 767px) {
+    html {
+      scrollbar-width: none;
+    }
+    html::-webkit-scrollbar {
+      display: none;
+    }
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);

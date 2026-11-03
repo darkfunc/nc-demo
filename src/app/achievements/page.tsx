@@ -74,6 +74,8 @@ export default function AchievementsPage() {
                   src="/achievement_carbonft.jpg"
                   alt="Nalanda College receiving recognition as Sri Lanka's first Carbon Footprint Neutral School"
                   className="w-full aspect-4/3 object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
 
